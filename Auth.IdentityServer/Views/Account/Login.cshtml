@@ -1,0 +1,69 @@
+@model LoginViewModel
+
+@{
+    Layout = "_LoginLayout";
+}
+
+<div class="container">
+    @*<div class="row"><partial name="_ValidationSummary" /></div>*@
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-6">
+            @if (Model.EnableLocalLogin)
+            {
+                <div class="form-block">
+                    <div class="text-center mb-2">
+                        <h3 style="margin-bottom: 10px;">Inicia sesi&oacute;n en Auth</h3>
+                        <partial name="_ValidationSummary" />
+
+                        <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
+                    </div>
+                    <form asp-route="Login">
+                        <input type="hidden" asp-for="ReturnUrl" />
+
+                        <div class="form-group">
+                            <label asp-for="Username"></label>
+                            <input class="form-control" placeholder="" asp-for="Username" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password"></label>
+                            <input type="password" class="form-control" placeholder="" asp-for="Password" autocomplete="off">
+                        </div>
+                        @if (Model.AllowRememberLogin)
+                        {
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" asp-for="RememberLogin">
+                                    <label class="form-check-label" asp-for="RememberLogin">
+                                        Recordarme
+                                    </label>
+                                </div>
+                            </div>}
+                    <button class="btn btn-primary" name="button" value="login">Iniciar sesi&oacute;n</button>
+                        <button class="btn btn-secondary" name="button" value="cancel">Cancelar</button>
+                    </form>
+                    @*<form action="#" method="post">
+                            <div class="form-group first">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
+                            </div>
+                            <div class="form-group last mb-3">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" placeholder="Your Password" id="password">
+                            </div>
+
+                            <div class="d-sm-flex mb-5 align-items-center">
+                                <label class="control control--checkbox mb-3 mb-sm-0">
+                                    <span class="caption">Remember me</span>
+                                    <input type="checkbox" checked="checked" />
+                                    <div class="control__indicator"></div>
+                                </label>
+                                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                            </div>
+
+                            <input type="submit" value="Log In" class="btn btn-block btn-primary">
+
+                        </form>*@
+                </div>}
+        </div>
+    </div>
+</div>
